@@ -9,6 +9,10 @@ app.get('/', function (request, response) {
     response.send("Hello world");
 });
 
-app.listen(3000, function () {
-    console.log("Server running");
-});
+// app.listen(3000, function () {
+//     console.log("Server running");
+// });
+
+// for test this is necessary
+// we need a separate file that binds our code to the network
+module.exports = app;               // now our app is encapsulated inside a node module
