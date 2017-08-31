@@ -5,13 +5,23 @@
 var express = require('express');
 var app = express();
 
+app.use(express.static('public'));
+
+
 app.get('/', function (request, response) {
     response.send("Hello world");
     // throw 'Error';
 });
 
-// for test this is necessary
+app.get('/foods', function (request, response) {
+    var foods = ['Burger', 'Fries', 'Pizza'];
+    response.json(foods);
+});
 
+
+
+
+// for test this is necessary
 
 // # MOVED TO bin/www
 // app.listen(3000, function () {
