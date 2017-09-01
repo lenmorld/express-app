@@ -5,8 +5,17 @@
 var express = require('express');
 var app = express();
 
+var bodyParser = require('body-parser');    // body-parser needed to be able to do request.body
+var urlencoded = bodyParser.urlencoded({ extended: false });
+
+
 app.use(express.static('public'));
 
+var foods = {
+    'banana': 'yellow and long',
+    'fries': 'Greasy and crispy',
+    'bbq': 'Grilled and spicy'
+};
 
 app.get('/', function (request, response) {
     response.send("Hello world");
@@ -14,10 +23,18 @@ app.get('/', function (request, response) {
 });
 
 app.get('/foods', function (request, response) {
-    var foods = ['Burger', 'Fries', 'Pizza'];
-    response.json(foods);
+    // response.json(foods);            // only if foods is a plain list ['banana', 'fries', 'bbq']
+    response.json(Object.keys(foods));
 });
 
+app.post('/foods', urlencoded, function (request, response) {      // post needs bodyParser.urlencoded
+
+    var newFood = request.body;
+    foods[newFood] = newFood.description;
+
+    response.status(201)
+        .json(newFood.name);
+});
 
 
 

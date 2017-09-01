@@ -54,8 +54,23 @@ describe('Listing cities on /foods', function () {
     it('Returns initial foods', function (done) {
        request(app)
            .get('/foods')
-           .expect(JSON.stringify(['Burger', 'Fries', 'Pizza']), done);
+           .expect(JSON.stringify(['banana', 'fries', 'bbq']), done);
     });
 });
 
-// describe('')
+describe('Creating new foods', function () {
+    it('Returns a 201 status code', function (done) {
+        request(app)
+            .post('/foods')
+            .send('name=Candy&description=sweet+and+chewy')
+            .expect(201, done);
+    });
+
+    it('Returns the food name', function (done) {
+        request(app)
+            .post('/foods')
+            .send('name=Candy&description=sweet+and+chewy')
+            .expect(/Candy/i, done);
+
+    })
+});

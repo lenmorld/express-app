@@ -70,4 +70,10 @@ hey cleint: "last time you sent request, content is still the same.
 
 
 
+### shrinkwrap ###
+everytime installing deps that will go into prod (not test/dev)
+
+npm install --save body-parser
+npm shrinkwrap
+
 
