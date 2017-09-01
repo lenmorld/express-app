@@ -65,6 +65,8 @@ app.post('/foods', urlencoded, function (request, response) {      // post needs
     //         .json(newFood.name);
     // });
 
+    response.status(201);
+
     // foods[newFood] = newFood.description;        // if foods is JSON object
 });
 
