@@ -114,3 +114,6 @@ heroku config:add NODE_ENV=production
 # -> have to add credit card on account to add addons Heroku
 heroku addons:add redistogo
 
+
+# troubleshooting #
+heroku logs --tail

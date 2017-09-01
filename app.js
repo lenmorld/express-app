@@ -25,7 +25,7 @@ if (process.env.REDISTOGO_URL) {        // heroku redis, https://devcenter.herok
     var client = redis.createClient();
     client.select((process.env.NODE_ENV || 'development').length);      // set NODE_DEV in package.json test
 }
-console.log("PROD NODE_DEV: ", process.env.NODE_ENV);
+console.log("PROD NODE_ENV: ", process.env.NODE_ENV);
 
 
 // run only once, because this is saved on Redis db
@@ -59,7 +59,7 @@ app.post('/foods', urlencoded, function (request, response) {      // post needs
     var newFood = request.body;
     console.log(newFood);
 
-    client.hset('foods', newFood.name, newFood.description, function (error) {
+    client.hset('foods', "hihi", "haha", function (error) {
         if(error) throw error;
     });
 
