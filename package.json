@@ -5,14 +5,16 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.15.4",
-    "body-parser": "~1.17.2"
+    "body-parser": "~1.17.2",
+    "redis": "~2.8.0",
+    "hiredis": "~0.5.0"
   },
   "devDependencies": {
     "supertest": "~3.0.0",
     "mocha": "~3.5.0"
   },
   "scripts": {
-    "test": "mocha test.js"
+    "test": "NODE_ENV=test mocha -w app.js test.js"
   },
   "repository": {
     "type": "git",
