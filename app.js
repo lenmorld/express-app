@@ -25,8 +25,6 @@ if (process.env.REDISTOGO_URL) {        // heroku redis, https://devcenter.herok
     client = redis.createClient();
     client.select((process.env.NODE_ENV || 'development').length);      // set NODE_DEV in package.json test
 }
-
-client.flushdb();
 console.log("PROD NODE_ENV: ", process.env.NODE_ENV);
 
 
