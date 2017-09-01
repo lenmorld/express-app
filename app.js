@@ -16,7 +16,6 @@ var redis = require('redis');
 if (process.env.REDISTOGO_URL) {        // heroku redis, https://devcenter.heroku.com/articles/redistogo
     var rtg = require("url").parse(process.env.REDISTOGO_URL);
     var client = redis.createClient(rtg.port, rtg.hostname);
-    console.log("RedisToGo auth: ", rtg.auth);
     client.auth(rtg.auth.split(":")[1]);
 
     // no select for prod
