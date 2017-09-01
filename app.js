@@ -55,11 +55,10 @@ app.get('/foods', function (request, response) {
 });
 
 app.post('/foods', urlencoded, function (request, response) {      // post needs bodyParser.urlencoded
-
     var newFood = request.body;
-    console.log(newFood);
+    // console.log(newFood);
 
-    client.hset('foods', "hihi", "haha", function (error) {
+    client.hset('foods', newFood.name, newFood.description, function (error) {
         if(error) throw error;
     });
 
