@@ -73,6 +73,13 @@ app.post('/foods', parseUrlEncoded, function (request, response) {      // post 
     // foods[newFood] = newFood.description;        // if foods is JSON object
 });
 
+app.delete('/foods/:name', function (request, response) {
+    client.hdel('foods', request.params.name, function (error) {
+        if(error)throw error;
+        response.sendStatus(204);
+    })
+});
+
 
 // for test this is necessary
 

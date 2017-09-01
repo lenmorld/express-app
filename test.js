@@ -80,3 +80,24 @@ describe('Creating new foods', function () {
 
     });
 });
+
+describe('Deleting foods', function () {
+
+    before(function () {
+        client.hset('foods', 'banana', 'lovin it');
+    });
+
+    after(function () {
+        client.flushdb();
+    });
+
+    it('Returns a 204 status code', function (done) {
+        request(app)
+            .delete('/foods/banana')
+            .expect(204, done);
+            // .end(function (error) {
+            //     if(error) throw error;
+            //     done();
+            // })
+    });
+})
