@@ -117,3 +117,8 @@ heroku addons:add redistogo
 
 # troubleshooting #
 heroku logs --tail
+
+
+# to try heroku on local #
+npm install
+heroku local web

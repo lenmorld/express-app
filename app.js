@@ -27,7 +27,6 @@ if (process.env.REDISTOGO_URL) {        // heroku redis, https://devcenter.herok
 }
 console.log("PROD NODE_ENV: ", process.env.NODE_ENV);
 
-
 // run only once, because this is saved on Redis db
 // client.hset('foods', 'banana', 'yellow and long' );     // hashset: key, value1, value2, ...
 // client.hset('foods', 'fries', 'greasy and crispy' );
