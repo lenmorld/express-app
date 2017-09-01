@@ -1,5 +1,10 @@
-TDD using mocha
+simple Express app with TDD using Mocha, supertest
 
+video: https://www.codeschool.com/screencasts/build-an-express-js-app-with-tdd
+github: https://github.com/codeschool/WatchUsBuild-ExpressAppWithTDD
+
+google docs for notes: https://docs.google.com/document/d/1a65WLB0lIH6QW5WJxkAZoMaVb5qt359-vDb3mgrfOuo/edit
+heroku and redis notes: https://docs.google.com/document/d/1US1Cf5hfDO4rJUJbq1PkELuFBr6mTk28QhXZHI2GZm0/edit#
 
 
 In UBuntu/Debian, symlink nodejs -> node to avoid errors
