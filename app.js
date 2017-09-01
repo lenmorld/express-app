@@ -20,9 +20,10 @@ if (process.env.REDISTOGO_URL) {        // heroku redis, https://devcenter.herok
     client.auth(rtg.auth.split(":")[1]);
 } else {
     var client = redis.createClient();
+    client.select((process.env.NODE_DEV || 'development').length);      // set NODE_DEV in package.json test
 }
 console.log("PROD NODE_DEV: ", process.env.NODE_DEV);
-client.select((process.env.NODE_DEV || 'development').length);      // set NODE_DEV in package.json test
+
 
 // run only once, because this is saved on Redis db
 // client.hset('foods', 'banana', 'yellow and long' );     // hashset: key, value1, value2, ...
