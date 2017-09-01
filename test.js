@@ -69,7 +69,7 @@ describe('Creating new foods', function () {
         request(app)
             .post('/foods')
             .send('name=Candy&description=sweet+and+chewy')
-            .expect(201, done);
+            .expect(201, done);         // 201 Created
     });
 
     it('Returns the food name', function (done) {
@@ -77,7 +77,13 @@ describe('Creating new foods', function () {
             .post('/foods')
             .send('name=Candy&description=sweet+and+chewy')
             .expect(/Candy/i, done);
+    });
 
+    it('Validates food name and description', function (done) {
+       request(app)
+           .post('/foods')
+           .send('name=&description=')
+           .expect(400, done);              // 400 Bad Request
     });
 });
 
@@ -94,7 +100,7 @@ describe('Deleting foods', function () {
     it('Returns a 204 status code', function (done) {
         request(app)
             .delete('/foods/banana')
-            .expect(204, done);
+            .expect(204, done);             // 204 No Content
             // .end(function (error) {
             //     if(error) throw error;
             //     done();

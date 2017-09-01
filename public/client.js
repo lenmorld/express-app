@@ -2,6 +2,9 @@ $(function() {
 	// $.get('/foods', getFoodsCallBack);
 	$.get('/foods', appendToList);
 
+    $('.alert-danger').hide();
+    $('.alert-success').hide();
+
     function appendToList(foods) {
         var listHTML = [];
         var content, food;
@@ -28,7 +31,14 @@ $(function() {
 			data: foodData
 		}).done(function(foodName) {
 			appendToList([foodName]);
-		});
+			form.trigger('reset');
+
+            $('.alert-danger').hide();
+            $('.alert-success').show();
+		}).fail(function () {
+			$('.alert-danger').show();
+			$('.alert-success').hide();
+        });
     });
 
 
