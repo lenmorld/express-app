@@ -1,4 +1,6 @@
 simple Express app with TDD using Mocha, supertest
+Redis for the persistence/DB
+Heroku for hosting, with addon RedisToGo
 
 video: https://www.codeschool.com/screencasts/build-an-express-js-app-with-tdd
 github: https://github.com/codeschool/WatchUsBuild-ExpressAppWithTDD
