@@ -60,12 +60,12 @@ app.post('/foods', urlencoded, function (request, response) {      // post needs
 
     client.hset('foods', newFood.name, newFood.description, function (error) {
         if(error) throw error;
+
+        response.status(201)
+            .json(newFood.name);
     });
 
     // foods[newFood] = newFood.description;        // if foods is JSON object
-
-    response.status(201)
-        .json(newFood.name);
 });
 
 
