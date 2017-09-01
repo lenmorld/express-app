@@ -32,6 +32,7 @@ console.log("PROD NODE_ENV: ", process.env.NODE_ENV);
 // client.hset('foods', 'banana', 'yellow and long' );     // hashset: key, value1, value2, ...
 // client.hset('foods', 'fries', 'greasy and crispy' );
 // client.hset('foods', 'bbq', 'Grilled and spicy' );
+client.hset('foods', 'corn', 'Modified and yummy' );
 
 // end Redis connection
 
