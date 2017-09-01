@@ -106,4 +106,35 @@ describe('Deleting foods', function () {
             //     done();
             // })
     });
-})
+});
+
+describe('Shows food info', function () {
+
+    before(function () {
+       client.hset('foods', 'banani', 'a tasty one');
+    });
+
+    after(function () {
+        client.flushdb();
+    });
+
+   it('Returns 200 status code', function (done) {
+       request(app)
+           .get('/foods/banani')
+           .expect(200, done);
+   });
+
+   it('Returns HTML format', function (done) {
+       request(app)
+           .get('/foods/banani')
+           .expect('Content-Type', /html/, done);
+   });
+
+   it('Returns information for given food', function (done) {
+       request(app)
+           .get('/foods/banani')
+           .expect(/tasty/, done);
+   })
+
+
+});

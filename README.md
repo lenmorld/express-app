@@ -122,3 +122,8 @@ heroku logs --tail
 # to try heroku on local #
 npm install
 heroku local web
+
+
+# EJS #
+npm isntall ejs --save
+npm shrinkwrap

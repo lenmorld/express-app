@@ -375,6 +375,11 @@
           "from": "nan@^2.3.4"
         }
       }
+    },
+    "ejs": {
+      "version": "2.5.7",
+      "from": "https://registry.npmjs.org/ejs/-/ejs-2.5.7.tgz",
+      "resolved": "https://registry.npmjs.org/ejs/-/ejs-2.5.7.tgz"
     }
   }
 }

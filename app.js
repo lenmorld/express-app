@@ -81,6 +81,26 @@ app.delete('/foods/:name', function (request, response) {
 });
 
 
+app.get('/foods/:name', function (request, response) {
+    // response.sendStatus(200);
+
+   client.hget('foods', request.params.name, function (error, description) {
+       response.render('food.ejs',
+           {
+               food:
+                   {
+                       name: request.params.name,
+                       description: description
+                   }
+           });
+
+        // description is the one from Redis
+   });
+
+});
+
+
+
 // for test this is necessary
 
 // # MOVED TO bin/www
