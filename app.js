@@ -54,7 +54,7 @@ app.get('/foods', function (request, response) {
     });
 });
 
-app.post('/foods', urlencoded, function (request, response) {      // post needs bodyParser.urlencoded
+app.post('/foods', function (request, response) {      // post needs bodyParser.urlencoded
     // var newFood = request.body;
     // // console.log(newFood);
     //
