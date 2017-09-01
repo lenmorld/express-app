@@ -6,7 +6,7 @@ var express = require('express');
 var app = express();
 
 var bodyParser = require('body-parser');    // body-parser needed to be able to do request.body
-var urlencoded = bodyParser.urlencoded({ extended: false });
+var parseUrlEncoded = bodyParser.urlencoded({ extended: false });
 
 app.use(express.static('public'));
 
@@ -32,7 +32,6 @@ console.log("PROD NODE_ENV: ", process.env.NODE_ENV);
 // client.hset('foods', 'banana', 'yellow and long' );     // hashset: key, value1, value2, ...
 // client.hset('foods', 'fries', 'greasy and crispy' );
 // client.hset('foods', 'bbq', 'Grilled and spicy' );
-client.hset('foods', 'corn', 'Modified and yummy' );
 
 // end Redis connection
 
@@ -55,7 +54,7 @@ app.get('/foods', function (request, response) {
     });
 });
 
-app.post('/foods', urlencoded, function (request, response) {      // post needs bodyParser.urlencoded
+app.post('/foods', parseUrlEncoded, function (request, response) {      // post needs bodyParser.urlencoded
     var newFood = request.body;
 
     if (!newFood.name || !newFood.description) {
@@ -63,16 +62,14 @@ app.post('/foods', urlencoded, function (request, response) {      // post needs
         return false;
     }
 
-    // // console.log(newFood);
-    //
-    // client.hset('foods', newFood.name, newFood.description, function (error) {
-    //     if(error) throw error;
-    //
-    //     response.status(201)
-    //         .json(newFood.name);
-    // });
+    // console.log(newFood);
 
-    response.status(201);
+    client.hset('foods', newFood.name, newFood.description, function (error) {
+        if(error) throw error;
+
+        response.status(201)
+            .json(newFood.name);
+    });
 
     // foods[newFood] = newFood.description;        // if foods is JSON object
 });
