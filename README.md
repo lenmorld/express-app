@@ -134,3 +134,11 @@ heroku local web
 # EJS #
 npm isntall ejs --save
 npm shrinkwrap
+
+
+
+TODO:
+- fix PROD bug with the routes/body parser/heroku/deps/package.json
+not really sure what it is
+check google docs for info
+
