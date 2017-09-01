@@ -12,18 +12,21 @@ app.use(express.static('public'));
 
 // ### REDIS connection ###
 var redis = require('redis');
+var client;
 
 if (process.env.REDISTOGO_URL) {        // heroku redis, https://devcenter.heroku.com/articles/redistogo
     var rtg = require("url").parse(process.env.REDISTOGO_URL);
-    var client = redis.createClient(rtg.port, rtg.hostname);
+    client = redis.createClient(rtg.port, rtg.hostname);
     client.auth(rtg.auth.split(":")[1]);
 
     // no select for prod
 
 } else {
-    var client = redis.createClient();
+    client = redis.createClient();
     client.select((process.env.NODE_ENV || 'development').length);      // set NODE_DEV in package.json test
 }
+
+client.flushdb();
 console.log("PROD NODE_ENV: ", process.env.NODE_ENV);
 
 
