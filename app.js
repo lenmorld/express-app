@@ -54,8 +54,14 @@ app.get('/foods', function (request, response) {
     });
 });
 
-app.post('/foods', function (request, response) {      // post needs bodyParser.urlencoded
-    // var newFood = request.body;
+app.post('/foods', urlencoded, function (request, response) {      // post needs bodyParser.urlencoded
+    var newFood = request.body;
+
+    if (!newFood.name || !newFood.description) {
+        response.sendStatus(400);
+        return false;
+    }
+
     // // console.log(newFood);
     //
     // client.hset('foods', newFood.name, newFood.description, function (error) {
