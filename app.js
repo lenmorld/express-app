@@ -18,11 +18,14 @@ if (process.env.REDISTOGO_URL) {        // heroku redis, https://devcenter.herok
     var client = redis.createClient(rtg.port, rtg.hostname);
     console.log("RedisToGo auth: ", rtg.auth);
     client.auth(rtg.auth.split(":")[1]);
+
+    // no select for prod
+
 } else {
     var client = redis.createClient();
-    client.select((process.env.NODE_DEV || 'development').length);      // set NODE_DEV in package.json test
+    client.select((process.env.NODE_ENV || 'development').length);      // set NODE_DEV in package.json test
 }
-console.log("PROD NODE_DEV: ", process.env.NODE_DEV);
+console.log("PROD NODE_DEV: ", process.env.NODE_ENV);
 
 
 // run only once, because this is saved on Redis db
@@ -58,7 +61,7 @@ app.post('/foods', urlencoded, function (request, response) {      // post needs
 
     client.hset('foods', newFood.name, newFood.description, function (error) {
         if(error) throw error;
-    })
+    });
 
     // foods[newFood] = newFood.description;        // if foods is JSON object
 
